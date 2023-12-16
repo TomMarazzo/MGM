@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MGM</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MGM.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    @* <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MGM</a>
@@ -30,7 +30,58 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> *@
+    @*  ******SIDEBAR MENU********* *@
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-blue min-vh-100">
+                <a href="/" class="d-flex align-items-right pb-3 mb-md-0 me-md-auto text-black text-decoration-none"
+               <span class="fs-5 d-none d-sm-inline"> MGM</span>
+               </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link align-middle px-0 text-black">
+                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
+                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Categories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
+                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
+                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
+                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Grow Plan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
+                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Blank</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
+                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Blank</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
