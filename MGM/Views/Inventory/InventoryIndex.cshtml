@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MGM.Models.Inventory>
+
+@{
+    ViewData["Title"] = "InventoryIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Inventory</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InventoryType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventoryType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InventoryId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.InventoryId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.InventoryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>

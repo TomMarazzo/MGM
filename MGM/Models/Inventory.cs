@@ -9,6 +9,6 @@ namespace MGM.Models
         public Guid InventoryId { get; set; }
         public string InventoryType { get; set; }
 
-        public virtual List<Crop>? Crops { get; set; } //List of Products in the Inventory
+        public virtual List<Crop>? Crops { get; set; } //List of Crops in the Inventory
     }
 }

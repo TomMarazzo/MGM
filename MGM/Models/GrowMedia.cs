@@ -5,7 +5,7 @@ namespace MGM.Models
     public class GrowMedia
     {
         [Key]
-        public int GrowMediaId { get; set; }
+        public Guid GrowMediaId { get; set; }
         public string Type { get; set; }
         //public float Qty { get; set; }
         //[DisplayFormat(DataFormatString = "{0:c}")]

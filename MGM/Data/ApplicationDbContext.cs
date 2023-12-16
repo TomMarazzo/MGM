@@ -1,5 +1,6 @@
 ﻿using MGM.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 
 namespace MGM.Data
@@ -9,6 +10,30 @@ namespace MGM.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder) //Model Relationships
+        {
+            base.OnModelCreating(modelBuilder);
+
+
+            //Crop and CustomerOrderDetail
+            modelBuilder.Entity<CustomerOrderDetail>()
+                .HasOne(p => p.Crop);
+
+            //CustomerOrderDetail and CustomerOrder
+            modelBuilder.Entity<CustomerOrderDetail>()
+                .HasOne(p => p.CustomerOrder);
+
+            //Crop and Inventory
+            //modelBuilder.Entity<Crop>()
+            //    .HasOne(p => p.)
+            //    .WithMany(p => p.Products)
+            //    .HasForeignKey(p => p.CategoryId)
+            //    .HasConstraintName("FK_Products_CategoryID");
+
+
+
         }
 
         public DbSet<CostQty> costQties { get; set; }

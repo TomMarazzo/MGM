@@ -6,7 +6,8 @@
     <title>@ViewData["Title"] - MGM</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MGM.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MigroGreens_Manager.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
 <body>
     @* <header>
@@ -31,11 +32,17 @@
             </div>
         </nav>
     </header> *@
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
     @*  ******SIDEBAR MENU********* *@
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-blue min-vh-100">
-                <a href="/" class="d-flex align-items-right pb-3 mb-md-0 me-md-auto text-black text-decoration-none"
+                <a href="/" class="d-flex align-items-right pb-3 mb-md-0 me-md-auto text-black text-decoration-none">
                <span class="fs-5 d-none d-sm-inline"> MGM</span>
                </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
@@ -45,27 +52,32 @@
                         </a>
                     </li>
 
+                   @*  <li>
+                        <a asp-controller="Crops" asp-action="CropIndex" class="nav-link align-middle px-0 text-black">
+                            <i class="bi bi-file-earmark-spreadsheet-fill"></i> <span class="ms-1 d-none d-sm-inline">Crop</span>
+                        </a>
+                    </li> 
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
-                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Categories</span>
+                        <a asp-controller="Inventory" asp-action="InventoryIndex" class="nav-link align-middle px-0 text-black">
+                            <i class="bi bi-bookmarks-fill"></i> <span class="ms-1 d-none d-sm-inline">Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Customer" asp-action="CustomerIndex" class="nav-link align-middle px-0 text-black">
+                            <i class="bi bi-shop"></i> <span class="ms-1 d-none d-sm-inline">Customers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="CustomerOrder" asp-action="CustomerOrderIndex" class="nav-link align-middle px-0 text-black">
+                            <i class="bi bi-shop"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
                         </a>
                     </li>
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
-                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Inventory</span>
+                            <i class="bi bi-calendar-week-fill"></i> <span class="ms-1 d-none d-sm-inline">Grow Plan</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
-                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
-                            <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Grow Plan</span>
-                        </a>
-                    </li>
-                    <li>
+                    </li> *@
+                    @* <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
                             <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Blank</span>
                         </a>
@@ -74,23 +86,19 @@
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-black">
                             <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Blank</span>
                         </a>
-                    </li>
+                    </li> *@
                 </ul>
-
+                <partial name="_LoginPartial" />
             </div>
 
         </div>
 
     </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer bg-primary text-dark text-center">
         <div class="container">
-            &copy; 2023 - MGM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - <i class="bi bi-flower1"></i> MigroGreens Manager <a asp-area=""></a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
