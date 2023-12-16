@@ -6,8 +6,7 @@ namespace MGM.Models
     {
         [Key]
         public Guid CustomerId { get; set; }
-        public string Brand { get; set; }
-
+        
         [Display(Name = "Company Name")]
         public string CompanyName { get; set; }
         [Display(Name = "First Name")]

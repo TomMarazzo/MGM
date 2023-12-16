@@ -1,11 +1,11 @@
-﻿@model MGM.Models.Inventory
+﻿@model MGM.Models.GrowPlan
 
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create New Inventory</h1>
+<h1>Create Grow Plan</h1>
 
 
 <hr />
@@ -14,11 +14,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="InventoryType" class="control-label"></label>
-                <input asp-for="InventoryType" class="form-control" />
-                <span asp-validation-for="InventoryType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -26,7 +21,7 @@
 </div>
 
 <div>
-    <a asp-action="InventoryIndex">Back to List</a>
+    <a asp-action="GrowPlanIndex">Back to List</a>
 </div>
 
 @section Scripts {

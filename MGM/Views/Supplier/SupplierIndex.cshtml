@@ -1,19 +1,22 @@
-﻿@model IEnumerable<MGM.Models.Customer>
+﻿@model IEnumerable<MGM.Models.Supplier>
 
 @{
-    ViewData["Title"] = "CustomerIndex";
+    ViewData["Title"] = "SupplierIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Customers</h1>
+<h1>List of Suppliers</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create a New Customer</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                       <th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.CompanyName)
             </th>
             <th>
@@ -43,7 +46,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CompanyName)
             </td>
@@ -69,9 +74,9 @@
                 @Html.DisplayFor(modelItem => item.Country)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.SupplierId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SupplierId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SupplierId">Delete</a>
             </td>
         </tr>
 }

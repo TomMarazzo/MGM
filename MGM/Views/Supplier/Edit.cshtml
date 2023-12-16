@@ -1,4 +1,4 @@
-﻿@model MGM.Models.Customer
+﻿@model MGM.Models.Supplier
 
 @{
     ViewData["Title"] = "Edit";
@@ -7,14 +7,18 @@
 
 <h1>Edit</h1>
 
-<h4>Customer</h4>
+<h4>Supplier</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="CustomerId" />
-            
+            <input type="hidden" asp-for="SupplierId" />
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="CompanyName" class="control-label"></label>
                 <input asp-for="CompanyName" class="form-control" />

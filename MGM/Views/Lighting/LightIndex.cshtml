@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MGM.Models.Lighting>
+
+@{
+    ViewData["Title"] = "LightIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lighting </h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Light</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LightingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LightingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LightingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

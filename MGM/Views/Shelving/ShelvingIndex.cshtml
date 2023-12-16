@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MGM.Models.Shelving>
+
+@{
+    ViewData["Title"] = "ShelvingIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Shelving</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Shelving</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Row)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Column)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalGrowSpaces)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Row)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Column)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalGrowSpaces)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ShelvingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ShelvingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ShelvingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,19 @@
+﻿@model MGM.Models.GrowPlan
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Grow Plan Details</h1>
+
+<div>
+    <h4>GrowPlan</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.GrowPlanId">Edit</a> |
+    <a asp-action="GrowPlanIndex">Back to List</a>
+</div>
