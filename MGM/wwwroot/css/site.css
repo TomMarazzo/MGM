@@ -1,22 +1,88 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
+/*******SideBar Menu*******/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 260px;
+    background: #fff;
+}
+
+    .sidebar .logo_details {
+        height: 60px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+        .sidebar .logo_details i {
+            font-size: 30px;
+            color: #fff;
+            height: 50px;
+            min-width: 78px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .sidebar .logo_details .logo_name {
+            font-size: 22px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+    .sidebar .nav-links {
+        background: black;
+        height: 100%;
+        padding-top: 30px;
+    }
+
+        .sidebar .nav-links li {
+            position: relative;
+            list-style: none;
+        }
+            .sidebar .nav-links li .icon-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .sidebar .nav-links li i {
+                height: 50px;
+                min-width: 78px;
+                text-align: center;
+                line-height: 50px;
+                color: #fff;
+                font-size: 20px;
+            }
+        .sidebar .nav-links li a{
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+            .sidebar .nav-links li a .link_name {
+                font-size:18px;
+                font-weight: 400px;
+                color: #fff;
+            }

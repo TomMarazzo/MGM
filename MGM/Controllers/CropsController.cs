@@ -54,7 +54,7 @@ namespace MGM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CropId,Name,SeedDensity,SoakHours,GerminationDays,WeightedDays,TotalGrowthDays,ExpectedYield")] Crop crop)
+        public async Task<IActionResult> Create([Bind("CropId,Name,SeedDensity,SoakHours,GerminationDays,StackDays,BlackOutDays,WeightedDays,TotalGrowthDays,ExpectedYield")] Crop crop)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace MGM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("CropId,Name,SeedDensity,SoakHours,GerminationDays,WeightedDays,TotalGrowthDays,ExpectedYield")] Crop crop)
+        public async Task<IActionResult> Edit(Guid id, [Bind("CropId,Name,SeedDensity,SoakHours,GerminationDays,StackDays,BlackOutDays,WeightedDays,TotalGrowthDays,ExpectedYield")] Crop crop)
         {
             if (id != crop.CropId)
             {

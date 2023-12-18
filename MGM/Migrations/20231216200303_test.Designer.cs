@@ -4,6 +4,7 @@ using MGM.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MGM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231216200303_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,9 +61,6 @@ namespace MGM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("BlackOutDays")
-                        .HasColumnType("int");
-
                     b.Property<Guid?>("CustomerOrderId")
                         .HasColumnType("uniqueidentifier");
 
@@ -84,9 +84,6 @@ namespace MGM.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("SoakHours")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StackDays")
                         .HasColumnType("int");
 
                     b.Property<int>("TotalGrowthDays")

@@ -15,9 +15,9 @@ namespace MGM.Models
         [Display(Name = "Germination Days")]
         public int GerminationDays { get; set; } //Scroll bar/wheel
         [Display(Name = "Stack Days")]
-        public int StackDays { get; }//Scroll bar/wheel *********Missing****
+        public int StackDays { get; set; }//Scroll bar/wheel *********Missing****
         [Display(Name = "Black Out Days")]
-        public int BlackOutDays { get; }//Scroll bar/wheel
+        public int BlackOutDays { get; set; }//Scroll bar/wheel
         [Display(Name = "Weighted Days")]
         public int WeightedDays { get; set; }//Scroll bar/wheel
         [Display(Name = "Total Growth Days")]
