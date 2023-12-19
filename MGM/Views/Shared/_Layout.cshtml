@@ -14,32 +14,32 @@
 </head>
 <body>
 
-    <header>
+    @* <header> *@
 
-        @*  ******From YT Tutorial SIDEBAR MENU********* *@
-        <div class="sidebar close">
-            <div class="logo_details">
-                <i class="bi bi-flower1"></i>
-                <span class="logo_name">Microgreen Manager</span>
-            </div>
-            <ul class="nav-links">
-
-                <li>
-                    <a asp-controller="Home" asp-action="Index">
-                        <i class="bi bi-speedometer"></i>
-                        <span class="link_name">Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <div class="icon-link">
-                        <a asp-controller="Inventory" asp-action="InventoryIndex">
-                            <i class="bi bi-boxes"></i>
-                            <span class="link_name">Inventory</span>
+    @*  ******From YT Tutorial SIDEBAR MENU********* *@
+    <div class="sidebar close">
+        <div class="logo_details">
+            <i class="bi bi-flower1"></i>
+            <span class="logo_name">Microgreen Manager</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-speedometer"></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <div class="logo_details">
+                        <i class="bi bi-boxes"></i>
+                        <span class="link_name">Inventory</span>
                         </a>
-                        <i class="bi bi-chevron-compact-down"></i>
+                        <i class="bi bi-chevron-compact-down arrow"></i>
                     </div>
                     @* *********SUB MENU*********** *@
                     <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Inventory Items</a></li>
                         <li>
                             <a asp-controller="Crops" asp-action="CropIndex">
                                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
@@ -70,68 +70,82 @@
                                 <span class="link_name">Trays</span>
                             </a>
                         </li>
+                        <li>
+                            <a asp-controller="Inventory" asp-action="InventoryIndex">
+                                <i class="bi bi-boxes"></i>
+                                <span class="link_name">Total Inventory</span>
+                            </a>
+                        </li>
                     </ul>
-                </li>
+            </li>
 
-                <li>
-                    <div class="icon-link">
-                        <a asp-controller="Customer" asp-action="CustomerIndex">
-                            <i class="bi bi-person-lines-fill"></i>
-                            <span class="link_name">Customers</span>
-                        </a>
+            <li>
+                <div class="icon-link">
+                    <a asp-controller="Customer" asp-action="CustomerIndex">
+                        <i class="bi bi-person-lines-fill"></i>
+                        <span class="link_name">Customers</span>
+                    </a>
 
-                    </div>
-                </li>
+                </div>
+            </li>
 
-                <li>
-                    <div class="icon-link">
-                        <a asp-controller="Supplier" asp-action="SupplierIndex">
-                            <i class="bi bi-truck-flatbed"></i>
-                            <span class="link_name">Suppliers</span>
-                        </a>
+            <li>
+                <div class="icon-link">
+                    <a asp-controller="Supplier" asp-action="SupplierIndex">
+                        <i class="bi bi-truck-flatbed"></i>
+                        <span class="link_name">Suppliers</span>
+                    </a>
 
-                    </div>
-                </li>
+                </div>
+            </li>
 
-                <li>
-                    <div class="icon-link">
-                        <a asp-controller="CustomerOrder" asp-action="CustomerOrderIndex">
-                            <i class="bi bi-shop"></i>
-                            <span class="link_name">Customer Orders</span>
-                        </a>
+            <li>
+                <div class="icon-link">
+                    <a asp-controller="CustomerOrder" asp-action="CustomerOrderIndex">
+                        <i class="bi bi-shop"></i>
+                        <span class="link_name">Customer Orders</span>
+                    </a>
 
-                    </div>
-                </li>
+                </div>
+            </li>
 
-                <li>
-                    <div class="icon-link">
-                        <a asp-controller="GrowPlans" asp-action="GrowPlanIndex">
-                            <i class="bi bi-calendar-week-fill"></i>
-                            <span class="link_name">Grow Plans</span>
-                        </a>
+            <li>
+                <div class="icon-link">
+                    <a asp-controller="GrowPlans" asp-action="GrowPlanIndex">
+                        <i class="bi bi-calendar-week-fill"></i>
+                        <span class="link_name">Grow Plans</span>
+                    </a>
 
-                    </div>
-                </li>
+                </div>
+            </li>
 
-                <li>
-                    <div class="icon-link">
-                        <a asp-controller="CostQty" asp-action="CostQtyIndex">
-                            <i class="bi bi-cash"></i>
-                            <span class="link_name">Cost-Qty</span>
-                        </a>
+            <li>
+                <div class="icon-link">
+                    <a asp-controller="CostQty" asp-action="CostQtyIndex">
+                        <i class="bi bi-cash"></i>
+                        <span class="link_name">Cost-Qty</span>
+                    </a>
 
-                    </div>
-                </li>
-                <li>
-                    <div class="icon-link">
-                        <partial name="_LoginPartial" />
-                    </div>
-                </li>
+                </div>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <partial name="_LoginPartial" />
+                </div>
+            </li>
 
-            </ul>
+        </ul>
+    </div>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <i class="bi bi-menu-down"></i>
+            <span class="text">Drop Down Sidebar</span>
+
         </div>
+    </section>
 
-    </header>
+    @* </header> *@
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -139,6 +153,13 @@
         </main>
     </div>
 
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bi-menu-down");
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    </script>
 
     <footer class="border-top footer bg-primary text-dark text-center">
         <div class="container">
