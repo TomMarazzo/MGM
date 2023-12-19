@@ -10,22 +10,22 @@ using MGM.Models;
 
 namespace MGM.Controllers
 {
-    public class GrowMediasController : Controller
+    public class GrowMediaController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public GrowMediasController(ApplicationDbContext context)
+        public GrowMediaController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: GrowMedias
+        // GET: GrowMedia
         public async Task<IActionResult> GrowMediaIndex()
         {
-            return View(await _context.GrowMedias.ToListAsync());
+            return View(await _context.GrowMedia.ToListAsync());
         }
 
-        // GET: GrowMedias/Details/5
+        // GET: GrowMedia/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -33,7 +33,7 @@ namespace MGM.Controllers
                 return NotFound();
             }
 
-            var growMedia = await _context.GrowMedias
+            var growMedia = await _context.GrowMedia
                 .FirstOrDefaultAsync(m => m.GrowMediaId == id);
             if (growMedia == null)
             {
@@ -43,18 +43,18 @@ namespace MGM.Controllers
             return View(growMedia);
         }
 
-        // GET: GrowMedias/Create
+        // GET: GrowMedia/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: GrowMedias/Create
+        // POST: GrowMedia/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GrowMediaId,Type,Description")] GrowMedia growMedia)
+        public async Task<IActionResult> Create([Bind("GrowMediaId,Date,Type,NoOfBags,Volume,Qty,Price,Description,Subtotal,CurrentTotal,RemainingTotal")] GrowMedia growMedia)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace MGM.Controllers
             return View(growMedia);
         }
 
-        // GET: GrowMedias/Edit/5
+        // GET: GrowMedia/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -74,7 +74,7 @@ namespace MGM.Controllers
                 return NotFound();
             }
 
-            var growMedia = await _context.GrowMedias.FindAsync(id);
+            var growMedia = await _context.GrowMedia.FindAsync(id);
             if (growMedia == null)
             {
                 return NotFound();
@@ -82,12 +82,12 @@ namespace MGM.Controllers
             return View(growMedia);
         }
 
-        // POST: GrowMedias/Edit/5
+        // POST: GrowMedia/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("GrowMediaId,Type,Description")] GrowMedia growMedia)
+        public async Task<IActionResult> Edit(Guid id, [Bind("GrowMediaId,Date,Type,NoOfBags,Volume,Qty,Price,Description,Subtotal,CurrentTotal,RemainingTotal")] GrowMedia growMedia)
         {
             if (id != growMedia.GrowMediaId)
             {
@@ -117,7 +117,7 @@ namespace MGM.Controllers
             return View(growMedia);
         }
 
-        // GET: GrowMedias/Delete/5
+        // GET: GrowMedia/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -125,7 +125,7 @@ namespace MGM.Controllers
                 return NotFound();
             }
 
-            var growMedia = await _context.GrowMedias
+            var growMedia = await _context.GrowMedia
                 .FirstOrDefaultAsync(m => m.GrowMediaId == id);
             if (growMedia == null)
             {
@@ -135,15 +135,15 @@ namespace MGM.Controllers
             return View(growMedia);
         }
 
-        // POST: GrowMedias/Delete/5
+        // POST: GrowMedia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var growMedia = await _context.GrowMedias.FindAsync(id);
+            var growMedia = await _context.GrowMedia.FindAsync(id);
             if (growMedia != null)
             {
-                _context.GrowMedias.Remove(growMedia);
+                _context.GrowMedia.Remove(growMedia);
             }
 
             await _context.SaveChangesAsync();
@@ -152,7 +152,7 @@ namespace MGM.Controllers
 
         private bool GrowMediaExists(Guid id)
         {
-            return _context.GrowMedias.Any(e => e.GrowMediaId == id);
+            return _context.GrowMedia.Any(e => e.GrowMediaId == id);
         }
     }
 }

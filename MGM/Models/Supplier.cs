@@ -19,6 +19,7 @@ namespace MGM.Models
         [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
         public string Country { get; set; }
+        public virtual List<Package>? Packages { get; set; }
         public virtual List<CostQty>? CostQties { get; set; } //List of Suppliers
 
     }

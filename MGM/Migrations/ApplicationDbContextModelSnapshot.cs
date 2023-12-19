@@ -212,6 +212,9 @@ namespace MGM.Migrations
                     b.Property<float>("CurrentTotal")
                         .HasColumnType("real");
 
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -240,7 +243,7 @@ namespace MGM.Migrations
 
                     b.HasKey("GrowMediaId");
 
-                    b.ToTable("GrowMedias");
+                    b.ToTable("GrowMedia");
                 });
 
             modelBuilder.Entity("MGM.Models.GrowPlan", b =>
@@ -311,6 +314,51 @@ namespace MGM.Migrations
                     b.HasIndex("GrowPlanId");
 
                     b.ToTable("MileStoneDates");
+                });
+
+            modelBuilder.Entity("MGM.Models.Package", b =>
+                {
+                    b.Property<Guid>("PackageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("CurrentTotal")
+                        .HasColumnType("real");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("QtyofPackages")
+                        .HasColumnType("int");
+
+                    b.Property<float>("RemainingTotal")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Subtotal")
+                        .HasColumnType("real");
+
+                    b.Property<Guid>("SupplierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("TotalQty")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PackageId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("Packages");
                 });
 
             modelBuilder.Entity("MGM.Models.Shelving", b =>
@@ -480,6 +528,17 @@ namespace MGM.Migrations
                         .HasForeignKey("GrowPlanId");
                 });
 
+            modelBuilder.Entity("MGM.Models.Package", b =>
+                {
+                    b.HasOne("MGM.Models.Supplier", "Supplier")
+                        .WithMany("Packages")
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
+                });
+
             modelBuilder.Entity("MGM.Models.Supplier", b =>
                 {
                     b.HasOne("MGM.Models.Crop", null)
@@ -560,6 +619,8 @@ namespace MGM.Migrations
             modelBuilder.Entity("MGM.Models.Supplier", b =>
                 {
                     b.Navigation("CostQties");
+
+                    b.Navigation("Packages");
                 });
 #pragma warning restore 612, 618
         }

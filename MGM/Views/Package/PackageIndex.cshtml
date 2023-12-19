@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MGM.Models.Package>
+
+@{
+    ViewData["Title"] = "PackageIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Packages</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create Package</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyofPackages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RemainingTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+                <td class="text-center">
+                @Html.DisplayFor(modelItem => item.QtyofPackages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+                <td class="text-center">
+                @Html.DisplayFor(modelItem => item.TotalQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+                <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Subtotal)
+            </td>
+                <td class="text-center">
+                @Html.DisplayFor(modelItem => item.CurrentTotal)
+            </td>
+                <td class="text-center">
+                @Html.DisplayFor(modelItem => item.RemainingTotal)
+            </td>
+                <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PackageId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PackageId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

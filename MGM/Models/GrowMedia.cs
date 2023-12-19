@@ -6,6 +6,8 @@ namespace MGM.Models
     {
         [Key]
         public Guid GrowMediaId { get; set; }
+        [Display(Name = "Date Y-M-D")]
+        public DateOnly Date { get; set; }
         public string Type { get; set; }
         [Display(Name = "No Of Bags")]
         public int NoOfBags { get; set; }
@@ -13,6 +15,7 @@ namespace MGM.Models
         public float Qty { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:c}")]
+        [Required]
         [Range(0.01, 999999)]
         public double Price { get; set; }
         public string Description { get; set; }

@@ -47,32 +47,34 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="text-right">
+                
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
+                <td class="text-center">
+                
                     @Html.DisplayFor(modelItem => item.SeedDensity)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.SoakHours)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.GerminationDays)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.StackDays)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.BlackOutDays)
                 </td>
 
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.WeightedDays)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.TotalGrowthDays)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.ExpectedYield)
                 </td>
                 <td>

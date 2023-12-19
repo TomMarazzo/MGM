@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MGM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231216201508_cropUpdate")]
-    partial class cropUpdate
+    [Migration("20231219161138_packages")]
+    partial class packages
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,9 +34,6 @@ namespace MGM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("GrowMediaId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -47,8 +44,6 @@ namespace MGM.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CostQtyId");
-
-                    b.HasIndex("GrowMediaId");
 
                     b.HasIndex("SupplierId");
 
@@ -217,13 +212,37 @@ namespace MGM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<float>("CurrentTotal")
+                        .HasColumnType("real");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NoOfBags")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<float>("Qty")
+                        .HasColumnType("real");
+
+                    b.Property<float>("RemainingTotal")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Subtotal")
+                        .HasColumnType("real");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Volume")
+                        .HasColumnType("real");
 
                     b.HasKey("GrowMediaId");
 
@@ -414,10 +433,6 @@ namespace MGM.Migrations
 
             modelBuilder.Entity("MGM.Models.CostQty", b =>
                 {
-                    b.HasOne("MGM.Models.GrowMedia", null)
-                        .WithMany("CostQties")
-                        .HasForeignKey("GrowMediaId");
-
                     b.HasOne("MGM.Models.Supplier", null)
                         .WithMany("CostQties")
                         .HasForeignKey("SupplierId");
@@ -523,8 +538,6 @@ namespace MGM.Migrations
 
             modelBuilder.Entity("MGM.Models.GrowMedia", b =>
                 {
-                    b.Navigation("CostQties");
-
                     b.Navigation("Suppliers");
                 });
 

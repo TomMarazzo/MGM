@@ -67,7 +67,7 @@ namespace MGM.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GrowMedias",
+                name: "GrowMedia",
                 columns: table => new
                 {
                     GrowMediaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -374,7 +374,7 @@ namespace MGM.Migrations
                     table.ForeignKey(
                         name: "FK_Suppliers_GrowMedias_GrowMediaId",
                         column: x => x.GrowMediaId,
-                        principalTable: "GrowMedias",
+                        principalTable: "GrowMedia",
                         principalColumn: "GrowMediaId");
                     table.ForeignKey(
                         name: "FK_Suppliers_Lightings_LightingId",
@@ -404,7 +404,7 @@ namespace MGM.Migrations
                     table.ForeignKey(
                         name: "FK_costQties_GrowMedias_GrowMediaId",
                         column: x => x.GrowMediaId,
-                        principalTable: "GrowMedias",
+                        principalTable: "GrowMedia",
                         principalColumn: "GrowMediaId");
                     table.ForeignKey(
                         name: "FK_costQties_Suppliers_SupplierId",
@@ -599,7 +599,7 @@ namespace MGM.Migrations
                 name: "Crops");
 
             migrationBuilder.DropTable(
-                name: "GrowMedias");
+                name: "GrowMedia");
 
             migrationBuilder.DropTable(
                 name: "Lightings");

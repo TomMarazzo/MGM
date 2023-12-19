@@ -243,7 +243,7 @@ namespace MGM.Migrations
 
                     b.HasKey("GrowMediaId");
 
-                    b.ToTable("GrowMedias");
+                    b.ToTable("GrowMedia");
                 });
 
             modelBuilder.Entity("MGM.Models.GrowPlan", b =>

@@ -25,49 +25,49 @@ namespace MGM.Migrations
 
             migrationBuilder.AddColumn<float>(
                 name: "CurrentTotal",
-                table: "GrowMedias",
+                table: "GrowMedia",
                 type: "real",
                 nullable: false,
                 defaultValue: 0f);
 
             migrationBuilder.AddColumn<int>(
                 name: "NoOfBags",
-                table: "GrowMedias",
+                table: "GrowMedia",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<double>(
                 name: "Price",
-                table: "GrowMedias",
+                table: "GrowMedia",
                 type: "float",
                 nullable: false,
                 defaultValue: 0.0);
 
             migrationBuilder.AddColumn<float>(
                 name: "Qty",
-                table: "GrowMedias",
+                table: "GrowMedia",
                 type: "real",
                 nullable: false,
                 defaultValue: 0f);
 
             migrationBuilder.AddColumn<float>(
                 name: "RemainingTotal",
-                table: "GrowMedias",
+                table: "GrowMedia",
                 type: "real",
                 nullable: false,
                 defaultValue: 0f);
 
             migrationBuilder.AddColumn<float>(
                 name: "Subtotal",
-                table: "GrowMedias",
+                table: "GrowMedia",
                 type: "real",
                 nullable: false,
                 defaultValue: 0f);
 
             migrationBuilder.AddColumn<float>(
                 name: "Volume",
-                table: "GrowMedias",
+                table: "GrowMedia",
                 type: "real",
                 nullable: false,
                 defaultValue: 0f);
@@ -78,31 +78,31 @@ namespace MGM.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "CurrentTotal",
-                table: "GrowMedias");
+                table: "GrowMedia");
 
             migrationBuilder.DropColumn(
                 name: "NoOfBags",
-                table: "GrowMedias");
+                table: "GrowMedia");
 
             migrationBuilder.DropColumn(
                 name: "Price",
-                table: "GrowMedias");
+                table: "GrowMedia");
 
             migrationBuilder.DropColumn(
                 name: "Qty",
-                table: "GrowMedias");
+                table: "GrowMedia");
 
             migrationBuilder.DropColumn(
                 name: "RemainingTotal",
-                table: "GrowMedias");
+                table: "GrowMedia");
 
             migrationBuilder.DropColumn(
                 name: "Subtotal",
-                table: "GrowMedias");
+                table: "GrowMedia");
 
             migrationBuilder.DropColumn(
                 name: "Volume",
-                table: "GrowMedias");
+                table: "GrowMedia");
 
             migrationBuilder.AddColumn<Guid>(
                 name: "GrowMediaId",
@@ -119,7 +119,7 @@ namespace MGM.Migrations
                 name: "FK_costQties_GrowMedias_GrowMediaId",
                 table: "costQties",
                 column: "GrowMediaId",
-                principalTable: "GrowMedias",
+                principalTable: "GrowMedia",
                 principalColumn: "GrowMediaId");
         }
     }
