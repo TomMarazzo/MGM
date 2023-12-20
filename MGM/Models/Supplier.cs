@@ -2,9 +2,10 @@
 
 namespace MGM.Models
 {
-    public class Supplier
+    public class Supplier 
     {
         [Key]
+        [Display(Name = "Supplier")]
         public Guid SupplierId { get; set; }
         public string Brand { get; set; }
         [Display(Name = "Company Name")]
@@ -20,7 +21,7 @@ namespace MGM.Models
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public virtual List<Package>? Packages { get; set; }
-        public virtual List<CostQty>? CostQties { get; set; } //List of Suppliers
+        
 
     }
 }

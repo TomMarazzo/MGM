@@ -8,7 +8,7 @@ namespace MGM.Models
     public class Package
     {
         [Key]
-        public Guid PackageId { get; set; }
+        public Guid PackageId { get; set; } //PK
         public Guid SupplierId { get; set; } //FK
         [Display(Name = "Date Y-M-D")]
         public DateOnly Date { get; set; }
@@ -32,6 +32,7 @@ namespace MGM.Models
 
         [ForeignKey(nameof(SupplierId))]
         [ValidateNever]
+        
         public virtual Supplier? Supplier { get; set; }
         //public virtual List<Supplier>? Suppliers { get; set; } //List of Suppliers
 

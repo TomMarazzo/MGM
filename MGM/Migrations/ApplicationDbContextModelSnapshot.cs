@@ -37,12 +37,7 @@ namespace MGM.Migrations
                     b.Property<float>("Qty")
                         .HasColumnType("real");
 
-                    b.Property<Guid?>("SupplierId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("CostQtyId");
-
-                    b.HasIndex("SupplierId");
 
                     b.ToTable("costQties");
                 });
@@ -55,9 +50,6 @@ namespace MGM.Migrations
 
                     b.Property<int>("BlackOutDays")
                         .HasColumnType("int");
-
-                    b.Property<Guid?>("CustomerOrderId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("ExpectedYield")
                         .HasColumnType("int");
@@ -92,8 +84,6 @@ namespace MGM.Migrations
 
                     b.HasKey("CropId");
 
-                    b.HasIndex("CustomerOrderId");
-
                     b.HasIndex("GrowPlanId");
 
                     b.HasIndex("InventoryId");
@@ -123,9 +113,6 @@ namespace MGM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("CustomerOrderId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -144,8 +131,6 @@ namespace MGM.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.HasIndex("CustomerOrderId");
-
                     b.ToTable("Customers");
                 });
 
@@ -155,9 +140,8 @@ namespace MGM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Comments")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -172,6 +156,8 @@ namespace MGM.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("CustomerOrderId");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("CustomerOrders");
                 });
@@ -272,33 +258,14 @@ namespace MGM.Migrations
                     b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("MGM.Models.InventoryCategory", b =>
-                {
-                    b.Property<Guid>("InventoryCategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("InventoryCategoryId");
-
-                    b.ToTable("InventoryCategorys");
-                });
-
             modelBuilder.Entity("MGM.Models.InventoryProduct", b =>
                 {
                     b.Property<Guid>("InventoryProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -307,9 +274,15 @@ namespace MGM.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("SupplierId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("InventoryProductId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("InventoryProducts");
                 });
@@ -515,19 +488,8 @@ namespace MGM.Migrations
                     b.ToTable("Trays");
                 });
 
-            modelBuilder.Entity("MGM.Models.CostQty", b =>
-                {
-                    b.HasOne("MGM.Models.Supplier", null)
-                        .WithMany("CostQties")
-                        .HasForeignKey("SupplierId");
-                });
-
             modelBuilder.Entity("MGM.Models.Crop", b =>
                 {
-                    b.HasOne("MGM.Models.CustomerOrder", null)
-                        .WithMany("Crops")
-                        .HasForeignKey("CustomerOrderId");
-
                     b.HasOne("MGM.Models.GrowPlan", null)
                         .WithMany("Crops")
                         .HasForeignKey("GrowPlanId");
@@ -537,11 +499,15 @@ namespace MGM.Migrations
                         .HasForeignKey("InventoryId");
                 });
 
-            modelBuilder.Entity("MGM.Models.Customer", b =>
+            modelBuilder.Entity("MGM.Models.CustomerOrder", b =>
                 {
-                    b.HasOne("MGM.Models.CustomerOrder", null)
-                        .WithMany("Customers")
-                        .HasForeignKey("CustomerOrderId");
+                    b.HasOne("MGM.Models.Customer", "Customer")
+                        .WithMany("CustomerOrders")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("MGM.Models.CustomerOrderDetail", b =>
@@ -553,7 +519,7 @@ namespace MGM.Migrations
                         .IsRequired();
 
                     b.HasOne("MGM.Models.CustomerOrder", "CustomerOrder")
-                        .WithMany("CustomerOrderDetails")
+                        .WithMany()
                         .HasForeignKey("CustomerOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -565,13 +531,13 @@ namespace MGM.Migrations
 
             modelBuilder.Entity("MGM.Models.InventoryProduct", b =>
                 {
-                    b.HasOne("MGM.Models.InventoryCategory", "InventoryCategory")
-                        .WithMany("InventoryProducts")
-                        .HasForeignKey("CategoryId")
+                    b.HasOne("MGM.Models.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("InventoryCategory");
+                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("MGM.Models.MileStoneDate", b =>
@@ -633,13 +599,9 @@ namespace MGM.Migrations
                     b.Navigation("Trays");
                 });
 
-            modelBuilder.Entity("MGM.Models.CustomerOrder", b =>
+            modelBuilder.Entity("MGM.Models.Customer", b =>
                 {
-                    b.Navigation("Crops");
-
-                    b.Navigation("CustomerOrderDetails");
-
-                    b.Navigation("Customers");
+                    b.Navigation("CustomerOrders");
                 });
 
             modelBuilder.Entity("MGM.Models.GrowMedia", b =>
@@ -659,11 +621,6 @@ namespace MGM.Migrations
                     b.Navigation("Crops");
                 });
 
-            modelBuilder.Entity("MGM.Models.InventoryCategory", b =>
-                {
-                    b.Navigation("InventoryProducts");
-                });
-
             modelBuilder.Entity("MGM.Models.Lighting", b =>
                 {
                     b.Navigation("Suppliers");
@@ -676,8 +633,6 @@ namespace MGM.Migrations
 
             modelBuilder.Entity("MGM.Models.Supplier", b =>
                 {
-                    b.Navigation("CostQties");
-
                     b.Navigation("Packages");
                 });
 #pragma warning restore 612, 618

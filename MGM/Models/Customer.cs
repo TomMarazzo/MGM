@@ -1,12 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MGM.Models
 {
-    public class Customer
+    public class Customer //One
     {
         [Key]
-        public Guid CustomerId { get; set; }
-        
+        public Guid CustomerId { get; set; }        
+
         [Display(Name = "Company Name")]
         public string CompanyName { get; set; }
         [Display(Name = "First Name")]
@@ -19,5 +22,6 @@ namespace MGM.Models
         [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
         public string Country { get; set; }
+        public virtual List<CustomerOrder>? CustomerOrders { get; set; } //List of CustomerOrders in Customer
     }
 }
