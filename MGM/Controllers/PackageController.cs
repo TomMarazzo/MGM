@@ -67,6 +67,7 @@ namespace MGM.Controllers
                 return RedirectToAction(nameof(PackageIndex));
             }
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "SupplierId", package.SupplierId);
+            
             return View(package);
         }
 

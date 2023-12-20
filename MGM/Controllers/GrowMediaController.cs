@@ -63,6 +63,9 @@ namespace MGM.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(GrowMediaIndex));
             }
+            //***********MATH**********
+            growMedia.Subtotal = growMedia.NoOfBags * growMedia.Volume;
+            //***********MATH**********
             return View(growMedia);
         }
 
