@@ -50,6 +50,8 @@ namespace MGM.Data
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Tray> Trays { get; set; }
         public DbSet<Package> Packages { get; set; }
+        public DbSet<InventoryProduct> InventoryProducts { get; set; }
+        public DbSet<InventoryCategory> InventoryCategorys { get; set; }
 
     }
 }
