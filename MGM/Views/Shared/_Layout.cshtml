@@ -53,7 +53,7 @@
 
             <li>
                 <div class="icon-link">
-                    <a asp-controller="CustomerOrders" asp-action="CustomerOrdersIndex">
+                    <a asp-controller="CustomerOrder" asp-action="CustomerOrderIndex">
                         <i class="bi bi-shop"></i>
                         <span class="link_name">Customer Orders</span>
                     </a>
@@ -96,7 +96,7 @@
                         </li>
 
                         <li>
-                            <a asp-controller="GrowMedia" asp-action="GrowMediaIndex">
+                            <a asp-controller="GrowMedia" asp-action="Index">
                                 <i class="bi bi-globe-americas"></i>
                                 <span class="link_name">Grow Media</span>
                             </a>
@@ -133,15 +133,7 @@
                         </li>
                     </ul>
             </li>
-            <li>
-                <div class="icon-link">
-                    <a asp-controller="CostQty" asp-action="CostQtyIndex">
-                        <i class="bi bi-cash"></i>
-                        <span class="link_name">Cost-Qty</span>
-                    </a>
-
-                </div>
-            </li>
+            
             <li>
                 <div class="icon-link">
                    
@@ -187,6 +179,7 @@
             &copy; 2023 - <i class="bi bi-flower1"></i> MigroGreens Manager <a asp-area=""></a>
         </div>
     </footer>
+    
     <script type="text/javascript">
         document.getElementById('btnSwitch').addEventListener('click', () => {
             if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {

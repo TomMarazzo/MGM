@@ -20,9 +20,10 @@ namespace MGM.Controllers
         }
 
         // GET: GrowMedia
-        public async Task<IActionResult> GrowMediaIndex()
+        public async Task<IActionResult> Index()
         {
-            return View(await _context.GrowMedia.ToListAsync());
+            var applicationDbContext = _context.GrowMedia.Include(g => g.Supplier);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: GrowMedia/Details/5
@@ -34,6 +35,7 @@ namespace MGM.Controllers
             }
 
             var growMedia = await _context.GrowMedia
+                .Include(g => g.Supplier)
                 .FirstOrDefaultAsync(m => m.GrowMediaId == id);
             if (growMedia == null)
             {
@@ -46,6 +48,7 @@ namespace MGM.Controllers
         // GET: GrowMedia/Create
         public IActionResult Create()
         {
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "SupplierId");
             return View();
         }
 
@@ -54,18 +57,16 @@ namespace MGM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GrowMediaId,Date,Type,NoOfBags,Volume,Qty,Price,Description,Subtotal,CurrentTotal,RemainingTotal")] GrowMedia growMedia)
+        public async Task<IActionResult> Create([Bind("GrowMediaId,SupplierId,Date,Type,Volume,Price,Tax,Total")] GrowMedia growMedia)
         {
             if (ModelState.IsValid)
             {
                 growMedia.GrowMediaId = Guid.NewGuid();
                 _context.Add(growMedia);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(GrowMediaIndex));
+                return RedirectToAction(nameof(Index));
             }
-            //***********MATH**********
-            growMedia.Subtotal = growMedia.NoOfBags * growMedia.Volume;
-            //***********MATH**********
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "SupplierId", growMedia.SupplierId);
             return View(growMedia);
         }
 
@@ -82,6 +83,7 @@ namespace MGM.Controllers
             {
                 return NotFound();
             }
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "SupplierId", growMedia.SupplierId);
             return View(growMedia);
         }
 
@@ -90,7 +92,7 @@ namespace MGM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("GrowMediaId,Date,Type,NoOfBags,Volume,Qty,Price,Description,Subtotal,CurrentTotal,RemainingTotal")] GrowMedia growMedia)
+        public async Task<IActionResult> Edit(Guid id, [Bind("GrowMediaId,SupplierId,Date,Type,Volume,Price,Tax,Total")] GrowMedia growMedia)
         {
             if (id != growMedia.GrowMediaId)
             {
@@ -115,8 +117,9 @@ namespace MGM.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(GrowMediaIndex));
+                return RedirectToAction(nameof(Index));
             }
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "SupplierId", growMedia.SupplierId);
             return View(growMedia);
         }
 
@@ -129,6 +132,7 @@ namespace MGM.Controllers
             }
 
             var growMedia = await _context.GrowMedia
+                .Include(g => g.Supplier)
                 .FirstOrDefaultAsync(m => m.GrowMediaId == id);
             if (growMedia == null)
             {
@@ -150,7 +154,7 @@ namespace MGM.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(GrowMediaIndex));
+            return RedirectToAction(nameof(Index));
         }
 
         private bool GrowMediaExists(Guid id)

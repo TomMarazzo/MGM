@@ -2,13 +2,11 @@
 
 namespace MGM.Models
 {
-    public class Supplier 
+    public class Supplier //ONE Supplier
     {
         [Key]
         [Display(Name = "Supplier")]
         public Guid SupplierId { get; set; }
-        public string Brand { get; set; }
-        [Display(Name = "Company Name")]
         public string CompanyName { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -21,7 +19,8 @@ namespace MGM.Models
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public virtual List<Package>? Packages { get; set; }
-        
+        public virtual List<GrowMedia>? GrowMedia { get; set; }
+
 
     }
 }

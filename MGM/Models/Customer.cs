@@ -22,6 +22,6 @@ namespace MGM.Models
         [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
         public string Country { get; set; }
-        public virtual List<CustomerOrder>? CustomerOrders { get; set; } //List of CustomerOrders in Customer
+        public virtual List<CustomerOrder>? CustomerOrder { get; set; } //List of CustomerOrders in Customer
     }
 }

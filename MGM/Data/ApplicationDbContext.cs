@@ -36,10 +36,9 @@ namespace MGM.Data
 
         }
 
-        public DbSet<CostQty> costQties { get; set; }
         public DbSet<Crop> Crops { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<CustomerOrder> CustomerOrders { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<CustomerOrder> CustomerOrder { get; set; }
         public DbSet<CustomerOrderDetail> CustomerOrderDetails { get; set; }
         public DbSet<GrowMedia> GrowMedia { get; set; }
         public DbSet<GrowPlan> GrowPlans { get; set; }
@@ -51,7 +50,7 @@ namespace MGM.Data
         public DbSet<Tray> Trays { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<InventoryProduct> InventoryProducts { get; set; }
-        
+
 
     }
 }

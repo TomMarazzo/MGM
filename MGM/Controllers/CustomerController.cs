@@ -22,7 +22,7 @@ namespace MGM.Controllers
         // GET: Customer
         public async Task<IActionResult> CustomerIndex()
         {
-            return View(await _context.Customers.ToListAsync());
+            return View(await _context.Customer.ToListAsync());
         }
 
         // GET: Customer/Details/5
@@ -33,7 +33,7 @@ namespace MGM.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var customer = await _context.Customer
                 .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (customer == null)
             {
@@ -74,7 +74,7 @@ namespace MGM.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _context.Customer.FindAsync(id);
             if (customer == null)
             {
                 return NotFound();
@@ -125,7 +125,7 @@ namespace MGM.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var customer = await _context.Customer
                 .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (customer == null)
             {
@@ -140,10 +140,10 @@ namespace MGM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _context.Customer.FindAsync(id);
             if (customer != null)
             {
-                _context.Customers.Remove(customer);
+                _context.Customer.Remove(customer);
             }
 
             await _context.SaveChangesAsync();
@@ -152,7 +152,7 @@ namespace MGM.Controllers
 
         private bool CustomerExists(Guid id)
         {
-            return _context.Customers.Any(e => e.CustomerId == id);
+            return _context.Customer.Any(e => e.CustomerId == id);
         }
     }
 }

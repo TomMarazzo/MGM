@@ -22,7 +22,7 @@ namespace MGM.Models
         [DisplayFormat(DataFormatString = "{0:c}")]
         
         [Range(0.01, 999999)]
-        public decimal Price { get; set; }        
+        public double Price { get; set; }        
 
         public float Subtotal { get; set; }
         [Display(Name = "Current Total")]

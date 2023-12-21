@@ -9,7 +9,6 @@ namespace MGM.Models
         public Guid TrayId { get; set; }
         public string Name { get; set; }
 
-        //[ForeignKey(nameof(CategoryId))]
-        public virtual CostQty CostQty { get; set; }
+       
     }
 }

@@ -12,26 +12,14 @@ namespace MGM.Models
         public Guid CustomerId { get; set; }    //FK
 
         public int Qty { get; set; }
-        [Display(Name = "Order Date")]
-        public DateTime OrderDate { get; set; }
-        public float Total { get; set; }
-        
 
-        [Display(Name = "Order Status")]
-        public int OrderStatus { get; set; } //Days from Harvest
+        [Display(Name = "Order Date Y-M-D")]
+        public DateTime OrderDate { get; set; }
+        public float Total { get; set; }        
 
         [ForeignKey(nameof(CustomerId))]
         [ValidateNever]
 
-        public virtual Customer? Customer { get; set; }
-
-
-
-
-
-
-
-
-
+        public virtual Customer Customer { get; set; }
     }
 }
